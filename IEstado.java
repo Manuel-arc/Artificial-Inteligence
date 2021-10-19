@@ -1,5 +1,13 @@
 public interface IEstado{
-//primeira mudança
-	//asjdnasd
+
+	boolean goal();
+	
+	Arraylist<Acao> suc();
+	
+	
+	static ArrayList<IEstado> getIniciais(){
+		return 
+	}
+	
 
 }
