@@ -145,7 +145,7 @@ public class PuzzleDeSeis implements IEstado{
      * retorna um inteiro com o valor do hash code deste estado
      */
 	@Override
-	public int hashcode() {
+	public int hashCode() {
 		int soma = 0;
 		int n = 0;
 		for(int i = 0; i < 2; i++){
@@ -188,7 +188,7 @@ public class PuzzleDeSeis implements IEstado{
 
 
 		System.out.println(n);System.out.println(n2);
-		System.out.println("\n"+ n.hashcode());
+		System.out.println("\n"+ n.hashCode());
 		System.out.println(n2.equals(n)); //usar hashcode de PuzzelDeSeis
 	}
 
