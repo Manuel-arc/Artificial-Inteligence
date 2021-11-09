@@ -7,8 +7,6 @@ public class PuzzleDeSeis implements IEstado{
 	
 	private int[][] matriz = {{1,0,0,0,0,5},{0,2,3,4,0,6}};
 
-	private static IEstado estado; 
-
 	public PuzzleDeSeis(int[][] novo) {
 		matriz = new int[2][6];
 		for(int i = 0; i < 2; i++) {
