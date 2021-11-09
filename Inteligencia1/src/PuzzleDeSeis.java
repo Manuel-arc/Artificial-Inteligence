@@ -135,18 +135,27 @@ public class PuzzleDeSeis implements IEstado{
      */
 	@Override
 	public boolean equals(Object p) {
-		if (p instanceof PuzzleDeSeis){
-			PuzzleDeSeis novoP = (PuzzleDeSeis) p;
-
-			int nP = novoP.hashCode();
-			int nThis = this.hashCode();
-
-			if (nP == nThis){
-				return true;
-			}
+		if (this == p){
+			return true;
+		}
+		if (!(p instanceof PuzzleDeSeis)){
+			return false;
 		}
 
-		return false;
+		PuzzleDeSeis np = (PuzzleDeSeis) p;
+		int a = 0;
+		for(int i = 0; i < 2; i++) {
+			for(int j = 0; j < 6; j++) {
+				if(np.matriz[i][j] == this.matriz[i][j]) {
+					a++;
+				}
+			}
+		}
+		if(a == 12){
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/*
@@ -197,7 +206,7 @@ public class PuzzleDeSeis implements IEstado{
 
 		System.out.println(n);System.out.println(n2);
 		System.out.println("\n"+ n.hashcode());
-		System.out.println(n2.hashcode()); //usar hashcode de PuzzelDeSeis
+		System.out.println(n2.equals(n)); //usar hashcode de PuzzelDeSeis
 	}
 
 }
