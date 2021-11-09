@@ -4,13 +4,25 @@ public class Node {
 	private IEstado estado;
 	private Node nodoPai;
 	private double g;
+	private int profundidade;
 	private ArrayList<Node> nosFronteira;
 	private String operacao;
 	
 	private Node(IEstado estado, Node estadoPai, double custoCaminho) {
 		this.estado = estado;
 		this.nodoPai = estadoPai;
-		this.g = custoCaminho;
+		
+		if (this.g < estadoPai.g()){
+			this.g = estadoPai.g();
+		} else{
+			this.g = custoCaminho;
+		}
+
+		if (estadoPai == null){
+			this.profundidade = 1;
+		} else {
+			profundidade = estadoPai.getProfundidade() + 1;
+		}
 	}
 
 	public IEstado getEstado() {
@@ -23,6 +35,10 @@ public class Node {
 
 	public double g() {
 		return g;
+	}
+
+	public int getProfundidade(){
+		return profundidade;
 	}
 
 	public double h() {
