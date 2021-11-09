@@ -159,6 +159,7 @@ public class PuzzleDeSeis implements IEstado{
 		for(int i = 0; i < 2; i++){
 			for(int j = 0; j < 6; j++){
 				soma += this.matriz[i][j] * Math.pow(5, n);
+				n++;
 			}
 		}
 
@@ -198,8 +199,8 @@ public class PuzzleDeSeis implements IEstado{
 
 
 		System.out.println(n);System.out.println(n2);
-		System.out.println("\n"+ n.hashCode());
-		System.out.println(n2.hashCode());
+		System.out.println("\n"+ n.hashcode());
+		System.out.println(n2.hashcode()); //usar hashcode de PuzzelDeSeis
 	}
 
 }
