@@ -12,7 +12,7 @@ public class Node {
 		this.estado = estado;
 		this.nodoPai = estadoPai;
 		
-		if (this.g < estadoPai.g()){
+		if (custoCaminho < estadoPai.g()){
 			this.g = estadoPai.g();
 		} else{
 			this.g = custoCaminho;
