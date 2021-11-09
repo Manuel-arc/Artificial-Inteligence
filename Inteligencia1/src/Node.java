@@ -17,12 +17,7 @@ public class Node {
 		} else{
 			this.g = custoCaminho;
 		}
-
-		if (estadoPai == null){
-			this.profundidade = 1;
-		} else {
-			profundidade = estadoPai.getProfundidade() + 1;
-		}
+		nosFronteira = new ArrayList<>();
 	}
 
 	public IEstado getEstado() {
@@ -53,7 +48,6 @@ public class Node {
 	 * Criar os nos Fronteiras do atual nodo
 	 */
 	public void criarNosFronteira(){
-		nosFronteira = new ArrayList<>();
 		ArrayList<Acao> sucessor = estado.suc();
 		
 		for(Acao s : sucessor) {
