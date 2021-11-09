@@ -193,9 +193,6 @@ public class PuzzleDeSeis implements IEstado{
 			if(a.getEstado().goal())
 				System.out.println(a.getEstado());
 		}
-		System.out.println("\n\n\n\n\n\n\n\n");
-		IEstado estado = ama2.get(0).getEstado();
-		IEstado estado2 = ama2.get(1).getEstado();
 
 
 		System.out.println(n);System.out.println(n2);
