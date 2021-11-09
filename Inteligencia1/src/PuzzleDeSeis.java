@@ -17,7 +17,7 @@ public class PuzzleDeSeis implements IEstado{
 	}
 	
 	public PuzzleDeSeis() {
-	//amanha	
+	
 	}
 
 	/*
