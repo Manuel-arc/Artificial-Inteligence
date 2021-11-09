@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PuzzleDeSeis implements IEstado{
 
-	private int hash = Integer.MAX_VALUE;
+	//private int hash = Integer.MAX_VALUE;
 	private final int[][] goalMatriz = {{0,0,0,0,0,0},{1,2,3,4,5,6}};
 	
 	private int[][] matriz = {{1,0,0,0,0,5},{0,2,3,4,0,6}};
@@ -51,13 +51,9 @@ public class PuzzleDeSeis implements IEstado{
      */
 	@Override
 	public ArrayList<Acao> suc() {
-		ArrayList<Acao> s = new ArrayList<Acao>();
+		ArrayList<Acao> s = new ArrayList<>();
 		for(int i = 0; i < 2; i++) {
 			for (int j = 0; j < 6; j++) {
-				if (matriz[i][j] == 0) {
-					
-				}
-				
 				if(i == 0 && matriz[i][j] > 0 && matriz[i+1][j] == 0) {   //baixo para cima
 					int[][] novo = new int[2][6];
 					for(int k = 0; k < 2; k++) {
@@ -69,7 +65,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i+1][j] = novo[i][j];
 					novo[i][j] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 				
@@ -83,8 +78,7 @@ public class PuzzleDeSeis implements IEstado{
 					}
 					novo[i-1][j] = novo[i][j];
 					novo[i][j] = 0;
-					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
+					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);					
 					s.add(new Acao(novoEstado, 1));
 				}
 				
@@ -99,7 +93,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i][j] = novo[i][j-1];
 					novo[i][j-1] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 
@@ -115,7 +108,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i][j] = novo[i][j+1];
 					novo[i][j+1] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 			}
