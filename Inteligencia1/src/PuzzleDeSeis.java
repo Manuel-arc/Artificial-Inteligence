@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class PuzzleDeSeis implements IEstado{
 
-	//private int hash = Integer.MAX_VALUE;
+	private int hash = Integer.MAX_VALUE;
 	private final int[][] goalMatriz = {{0,0,0,0,0,0},{1,2,3,4,5,6}};
 	
 	private int[][] matriz = {{1,0,0,0,0,5},{0,2,3,4,0,6}};
@@ -26,7 +26,6 @@ public class PuzzleDeSeis implements IEstado{
 	 */
 	@Override
 	public double h() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -43,11 +42,8 @@ public class PuzzleDeSeis implements IEstado{
 				}
 			}
 		}
-		if(a == 12) {
-			return true;
-		} else {
-			return false;
-		}
+		
+		return a == 12;
 	}
 
 	/*
@@ -149,11 +145,8 @@ public class PuzzleDeSeis implements IEstado{
 				}
 			}
 		}
-		if(a == 12){
-			return true;
-		} else {
-			return false;
-		}
+		
+		return a == 12;
 	}
 	
 	/*
