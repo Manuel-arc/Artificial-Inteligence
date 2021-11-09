@@ -6,7 +6,7 @@ public class PuzzleDeSeis implements IEstado{
 	private final int[][] goalMatriz = {{0,0,0,0,0,0},{1,2,3,4,5,6}};
 	
 	private int[][] matriz = {{1,3,0,0,0,0},{0,2,0,4,5,6}}; 
-	
+	//comentario
 	public PuzzleDeSeis(int[][] novo) {
 		matriz = new int[2][6];
 		for(int i = 0; i < 2; i++) {
@@ -21,7 +21,7 @@ public class PuzzleDeSeis implements IEstado{
 	}
 
 	/*
-	 * função heurística
+	 * funï¿½ï¿½o heurï¿½stica
 	 * retorna o valor de h associado ao estado
 	 */
 	@Override
@@ -51,7 +51,7 @@ public class PuzzleDeSeis implements IEstado{
 	}
 
 	/*
-     * retorna uma coleção com os estados sucessores, e o custo de transição de cada um
+     * retorna uma coleï¿½ï¿½o com os estados sucessores, e o custo de transiï¿½ï¿½o de cada um
      */
 	@Override
 	public ArrayList<Acao> suc() {
