@@ -5,7 +5,9 @@ public class PuzzleDeSeis implements IEstado{
 	//private int hash = Integer.MAX_VALUE;
 	private final int[][] goalMatriz = {{0,0,0,0,0,0},{1,2,3,4,5,6}};
 	
-	private int[][] matriz = {{1,0,0,0,0,5},{0,2,3,4,0,6}}; 
+	private int[][] matriz = {{1,0,0,0,0,5},{0,2,3,4,0,6}};
+
+	private static IEstado estado; 
 
 	public PuzzleDeSeis(int[][] novo) {
 		matriz = new int[2][6];
@@ -17,7 +19,7 @@ public class PuzzleDeSeis implements IEstado{
 	}
 	
 	public PuzzleDeSeis() {
-		//Empty constructor
+		
 	}
 
 	/*
@@ -133,6 +135,17 @@ public class PuzzleDeSeis implements IEstado{
      */
 	@Override
 	public boolean equals(Object p) {
+		if (p instanceof PuzzleDeSeis){
+			PuzzleDeSeis novoP = (PuzzleDeSeis) p;
+
+			int nP = novoP.hashCode();
+			int nThis = this.hashCode();
+
+			if (nP == nThis){
+				return true;
+			}
+		}
+
 		return false;
 	}
 	
@@ -141,7 +154,15 @@ public class PuzzleDeSeis implements IEstado{
      */
 	@Override
 	public int hashcode() {
-		return 0;
+		int soma = 0;
+		int n = 0;
+		for(int i = 0; i < 2; i++){
+			for(int j = 0; j < 6; j++){
+				soma += this.matriz[i][j] * Math.pow(5, n);
+			}
+		}
+
+		return soma;
 	}
 	
 	public String toString() {
@@ -153,6 +174,7 @@ public class PuzzleDeSeis implements IEstado{
 	
 	public static void main(String[] args) {
 		PuzzleDeSeis n = new PuzzleDeSeis();
+		PuzzleDeSeis n2 = new PuzzleDeSeis();
 
 		
 		System.out.println(n);
@@ -170,6 +192,14 @@ public class PuzzleDeSeis implements IEstado{
 			if(a.getEstado().goal())
 				System.out.println(a.getEstado());
 		}
+		System.out.println("\n\n\n\n\n\n\n\n");
+		IEstado estado = ama2.get(0).getEstado();
+		IEstado estado2 = ama2.get(1).getEstado();
+
+
+		System.out.println(n);System.out.println(n2);
+		System.out.println("\n"+ n.hashCode());
+		System.out.println(n2.hashCode());
 	}
 
 }
