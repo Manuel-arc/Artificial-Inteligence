@@ -3,14 +3,14 @@ import java.util.ArrayList;
 public class Node {
 	private IEstado estado;
 	private Node nodoPai;
-	private double custoCaminho;
+	private double g;
 	private ArrayList<Node> nosFronteira;
 	private String operacao;
 	
 	private Node(IEstado estado, Node estadoPai, double custoCaminho) {
 		this.estado = estado;
 		this.nodoPai = estadoPai;
-		this.custoCaminho = custoCaminho;
+		this.g = custoCaminho;
 	}
 
 	public IEstado getEstado() {
@@ -21,11 +21,11 @@ public class Node {
 		return nodoPai;
 	}
 
-	public double getCustoCaminho() {
-		return custoCaminho;
+	public double g() {
+		return g;
 	}
 
-	public double getCustoExpectativa() {
+	public double h() {
 		return estado.h();
 	}
 	
@@ -46,10 +46,10 @@ public class Node {
 		}
 	}
 	
-	//estados associados ao nó
-	//associar o pai do nó -> o nó anterior -> apontador para o pai
+	//estados associados ao nï¿½
+	//associar o pai do nï¿½ -> o nï¿½ anterior -> apontador para o pai
 	//custo do caminho -> soma de tudo ate oa momento -> caminho ja andado
-	//estimativa de quanto custa ate o estado final -> o que pode faltar ate o fim -> está no estado
+	//estimativa de quanto custa ate o estado final -> o que pode faltar ate o fim -> estï¿½ no estado
 	//criar o no, calcular o h do estado e guardar numa variavel -> pegar no ha do estado
 
 }
