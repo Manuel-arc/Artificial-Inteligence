@@ -26,7 +26,6 @@ public class PuzzleDeSeis implements IEstado{
 	 */
 	@Override
 	public double h() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
@@ -199,7 +198,7 @@ public class PuzzleDeSeis implements IEstado{
 
 
 		System.out.println(n);System.out.println(n2);
-		System.out.println("\n"+ n.hashcode());
+		System.out.println("\n"+ n.hashCode());
 		System.out.println(n2.equals(n)); //usar hashcode de PuzzelDeSeis
 	}
 
