@@ -72,7 +72,7 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i+1][j] = novo[i][j];
 					novo[i][j] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					s.add(new Acao(novoEstado, 1));
+					s.add(new Acao(novoEstado, 1, "cima"));
 				}
 				
 				if(i == 1 && matriz[i][j] > 0 && matriz[i-1][j] == 0) {
@@ -86,7 +86,7 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i-1][j] = novo[i][j];
 					novo[i][j] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					s.add(new Acao(novoEstado, 1));
+					s.add(new Acao(novoEstado, 1, "baixo"));
 				}
 				
 				if(j > 0 && matriz[i][j-1] > 0 && matriz[i][j] == 0) {     //esquerda para a direita
@@ -100,7 +100,7 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i][j] = novo[i][j-1];
 					novo[i][j-1] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					s.add(new Acao(novoEstado, 1));
+					s.add(new Acao(novoEstado, 1, "direita"));
 				}
 
 				
@@ -115,7 +115,7 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i][j] = novo[i][j+1];
 					novo[i][j+1] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					s.add(new Acao(novoEstado, 1));
+					s.add(new Acao(novoEstado, 1, "esquerda"));
 				}
 			}
 		}

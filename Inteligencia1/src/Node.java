@@ -8,15 +8,17 @@ public class Node {
 	private ArrayList<Node> nosFronteira;
 	private String operacao;
 	
-	private Node(IEstado estado, Node estadoPai, double custoCaminho) {
+	private Node(IEstado estado, Node estadoPai, double custoCaminho, String operacao) {
 		this.estado = estado;
 		this.nodoPai = estadoPai;
+		this.operacao = operacao;
 		
-		if (this.g < estadoPai.g()){
-			this.g = estadoPai.g();
-		} else{
-			this.g = custoCaminho;
+		if(this.nodoPai == null){
+			g = custoCaminho;
+		} else {
+			g = nodoPai.g() + custoCaminho;
 		}
+
 		if(this.nodoPai == null){
 			profundidade = 1;
 		} else{
@@ -56,7 +58,7 @@ public class Node {
 		ArrayList<Acao> sucessor = estado.suc();
 		
 		for(Acao s : sucessor) {
-			Node n = new Node(s.getEstado(), this, s.getCusto());
+			Node n = new Node(s.getEstado(), this, s.getCusto(), s.getDescr());
 			nosFronteira.add(n);
 		}
 	}
