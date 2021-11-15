@@ -49,6 +49,10 @@ public class Node {
 	public String getOperacao() {
 		return operacao;
 	}
+
+	public ArrayList<Node> getNosFronteira(){
+		return nosFronteira;
+	}
 	
 	/*
 	 * Criar os nos Fronteiras do atual nodo
@@ -68,5 +72,21 @@ public class Node {
 	//custo do caminho -> soma de tudo ate oa momento -> caminho ja andado
 	//estimativa de quanto custa ate o estado final -> o que pode faltar ate o fim -> est� no estado
 	//criar o no, calcular o h do estado e guardar numa variavel -> pegar no ha do estado
+
+	public static void main(String[] args) {
+		PuzzleDeSeis a = new PuzzleDeSeis();
+		Node n = new Node(a, null, 0, null);
+
+		System.out.println("Primeiro estado");
+		System.out.println(n.getEstado());
+
+		n.criarNosFronteira();
+
+		System.out.println("Nos Fronteira");
+		for(Node no : n.getNosFronteira()){
+			System.out.println(no.getEstado());
+			System.out.println(no.getOperacao());
+		}
+	}
 
 }
