@@ -156,7 +156,7 @@ public class PuzzleDeSeis implements IEstado{
      * retorna um inteiro com o valor do hash code deste estado
      */
 	@Override
-	public int hashcode() {
+	public int hashCode() {
 		int soma = 0;
 		int n = 0;
 		for(int i = 0; i < 2; i++){
