@@ -73,7 +73,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i+1][j] = novo[i][j];
 					novo[i][j] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 				
@@ -88,7 +87,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i-1][j] = novo[i][j];
 					novo[i][j] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 				
@@ -103,7 +101,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i][j] = novo[i][j-1];
 					novo[i][j-1] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 
@@ -119,7 +116,6 @@ public class PuzzleDeSeis implements IEstado{
 					novo[i][j] = novo[i][j+1];
 					novo[i][j+1] = 0;
 					PuzzleDeSeis novoEstado = new PuzzleDeSeis(novo);
-					//System.out.println("\nEstado:\n"+ novoEstado);
 					s.add(new Acao(novoEstado, 1));
 				}
 			}
