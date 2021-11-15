@@ -8,15 +8,15 @@ public class Node {
 	private ArrayList<Node> nosFronteira;
 	private String operacao;
 	
-	private Node(IEstado estado, Node estadoPai, double custoCaminho, String operacao) {
+	private Node(IEstado estado, Node estadoPai, String operacao) {
 		this.estado = estado;
 		this.nodoPai = estadoPai;
 		this.operacao = operacao;
 		
 		if(this.nodoPai == null){
-			g = custoCaminho;
+			g = 0;
 		} else {
-			g = nodoPai.g() + custoCaminho;
+			g = nodoPai.g() + 1;
 		}
 
 		if(this.nodoPai == null){
@@ -62,7 +62,7 @@ public class Node {
 		ArrayList<Acao> sucessor = estado.suc();
 		
 		for(Acao s : sucessor) {
-			Node n = new Node(s.getEstado(), this, s.getCusto(), s.getDescr());
+			Node n = new Node(s.getEstado(), this, s.getDescr());
 			nosFronteira.add(n);
 		}
 	}
@@ -75,10 +75,13 @@ public class Node {
 
 	public static void main(String[] args) {
 		PuzzleDeSeis a = new PuzzleDeSeis();
-		Node n = new Node(a, null, 0, null);
+		Node n = new Node(a, null, null);
 
 		System.out.println("Primeiro estado");
 		System.out.println(n.getEstado());
+		System.out.println(n.getOperacao());
+		System.out.println(n.g());
+		System.out.println(n.getProfundidade());
 
 		n.criarNosFronteira();
 
@@ -86,6 +89,19 @@ public class Node {
 		for(Node no : n.getNosFronteira()){
 			System.out.println(no.getEstado());
 			System.out.println(no.getOperacao());
+			System.out.println(no.g());
+			System.out.println(no.getProfundidade());
+		}
+
+		Node am = n.getNosFronteira().get(0);
+		am.criarNosFronteira();
+
+		System.out.println("\nNos fronteira 2 lvl");
+		for(Node no : am.getNosFronteira()){
+			System.out.println(no.getEstado());
+			System.out.println(no.getOperacao());
+			System.out.println(no.g());
+			System.out.println(no.getProfundidade());
 		}
 	}
 
