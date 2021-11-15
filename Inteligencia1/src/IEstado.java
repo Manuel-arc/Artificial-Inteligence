@@ -8,10 +8,10 @@ public interface IEstado {
 	ArrayList<Acao> suc();
 	
 	static ArrayList<IEstado> getIniciais(){
-		return new ArrayList<IEstado>();
+		return new ArrayList<>();
 	}
 	
 	boolean equals(Object p);
 	
-	int hashcode();
+	int hashCode();
 }
