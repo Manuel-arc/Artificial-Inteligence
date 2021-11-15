@@ -17,7 +17,11 @@ public class Node {
 		} else{
 			this.g = custoCaminho;
 		}
-
+		if(this.nodoPai == null){
+			profundidade = 1;
+		} else{
+			profundidade = nodoPai.getProfundidade() + 1;
+		}
 	}
 
 	public IEstado getEstado() {
