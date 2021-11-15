@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Node {
 	private IEstado estado;
 	private Node nodoPai;
-	private double g;
+	private double g; //CUSTO DO CAMINHO ATE AO MOMENTO
 	private int profundidade;
 	private ArrayList<Node> nosFronteira;
 	private String operacao;
@@ -45,7 +45,7 @@ public class Node {
 	public double h() {
 		return estado.h();
 	}
-	
+
 	public String getOperacao() {
 		return operacao;
 	}
