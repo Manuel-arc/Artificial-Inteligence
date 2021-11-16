@@ -27,6 +27,10 @@ public class Node {
 		}
 	}
 
+	public Node(){
+		
+	}
+
 	public IEstado getEstado() {
 		return estado;
 	}
