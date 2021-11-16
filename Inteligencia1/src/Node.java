@@ -8,7 +8,7 @@ public class Node {
 	private ArrayList<Node> nosSucessores;
 	private String operacao;
 	
-	private Node(IEstado estado, Node estadoPai, String operacao) {
+	public Node(IEstado estado, Node estadoPai, String operacao) {
 		this.estado = estado;
 		this.nodoPai = estadoPai;
 		this.operacao = operacao;
