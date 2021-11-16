@@ -4,6 +4,7 @@ public class Node {
 	private IEstado estado;
 	private Node nodoPai;
 	private double g; //CUSTO DO CAMINHO ATE AO MOMENTO
+	private double f; //CUSTO DO QUE PODERÁ FALTAR. g() + h()
 	private int profundidade;
 	private ArrayList<Node> nosSucessores;
 	private String operacao;
@@ -38,26 +39,26 @@ public class Node {
 		return g;
 	}
 
-	public int getProfundidade(){
-		return profundidade;
-	}
-
 	public double h() {
 		return estado.h();
+	}
+
+	public double f(){
+		return f;
+	}
+
+	public int getProfundidade(){
+		return profundidade;
 	}
 
 	public String getOperacao() {
 		return operacao;
 	}
-
-	public ArrayList<Node> getNosSucessores(){
-		return nosSucessores;
-	}
 	
 	/*
 	 * Criar os nos Fronteiras do atual nodo
 	 */
-	public void criarNosSucessores(){
+	public ArrayList<Node> getNosSucessores(){
 		nosSucessores = new ArrayList<>();
 		ArrayList<Acao> sucessor = estado.suc();
 		
@@ -65,6 +66,8 @@ public class Node {
 			Node n = new Node(s.getEstado(), this, s.getDescr());
 			nosSucessores.add(n);
 		}
+
+		return nosSucessores;
 	}
 	
 	//estados associados ao n�
@@ -72,37 +75,5 @@ public class Node {
 	//custo do caminho -> soma de tudo ate oa momento -> caminho ja andado
 	//estimativa de quanto custa ate o estado final -> o que pode faltar ate o fim -> est� no estado
 	//criar o no, calcular o h do estado e guardar numa variavel -> pegar no ha do estado
-
-	public static void main(String[] args) {
-		PuzzleDeSeis a = new PuzzleDeSeis();
-		Node n = new Node(a, null, null);
-
-		System.out.println("Primeiro estado");
-		System.out.println(n.getEstado());
-		System.out.println(n.getOperacao());
-		System.out.println(n.g());
-		System.out.println(n.getProfundidade());
-
-		n.criarNosSucessores();
-
-		System.out.println("Nos Fronteira");
-		for(Node no : n.getNosSucessores()){
-			System.out.println(no.getEstado());
-			System.out.println(no.getOperacao());
-			System.out.println(no.g());
-			System.out.println(no.getProfundidade());
-		}
-
-		Node am = n.getNosSucessores().get(0);
-		am.criarNosSucessores();
-
-		System.out.println("\nNos fronteira 2 lvl");
-		for(Node no : am.getNosSucessores()){
-			System.out.println(no.getEstado());
-			System.out.println(no.getOperacao());
-			System.out.println(no.g());
-			System.out.println(no.getProfundidade());
-		}
-	}
 
 }
