@@ -5,7 +5,7 @@ public class Node {
 	private Node nodoPai;
 	private double g; //CUSTO DO CAMINHO ATE AO MOMENTO
 	private int profundidade;
-	private ArrayList<Node> nosFronteira;
+	private ArrayList<Node> nosSucessores;
 	private String operacao;
 	
 	private Node(IEstado estado, Node estadoPai, String operacao) {
@@ -50,20 +50,20 @@ public class Node {
 		return operacao;
 	}
 
-	public ArrayList<Node> getNosFronteira(){
-		return nosFronteira;
+	public ArrayList<Node> getNosSucessores(){
+		return nosSucessores;
 	}
 	
 	/*
 	 * Criar os nos Fronteiras do atual nodo
 	 */
-	public void criarNosFronteira(){
-		nosFronteira = new ArrayList<>();
+	public void criarNosSucessores(){
+		nosSucessores = new ArrayList<>();
 		ArrayList<Acao> sucessor = estado.suc();
 		
 		for(Acao s : sucessor) {
 			Node n = new Node(s.getEstado(), this, s.getDescr());
-			nosFronteira.add(n);
+			nosSucessores.add(n);
 		}
 	}
 	
@@ -83,21 +83,21 @@ public class Node {
 		System.out.println(n.g());
 		System.out.println(n.getProfundidade());
 
-		n.criarNosFronteira();
+		n.criarNosSucessores();
 
 		System.out.println("Nos Fronteira");
-		for(Node no : n.getNosFronteira()){
+		for(Node no : n.getNosSucessores()){
 			System.out.println(no.getEstado());
 			System.out.println(no.getOperacao());
 			System.out.println(no.g());
 			System.out.println(no.getProfundidade());
 		}
 
-		Node am = n.getNosFronteira().get(0);
-		am.criarNosFronteira();
+		Node am = n.getNosSucessores().get(0);
+		am.criarNosSucessores();
 
 		System.out.println("\nNos fronteira 2 lvl");
-		for(Node no : am.getNosFronteira()){
+		for(Node no : am.getNosSucessores()){
 			System.out.println(no.getEstado());
 			System.out.println(no.getOperacao());
 			System.out.println(no.g());
