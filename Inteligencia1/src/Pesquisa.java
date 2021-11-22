@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Pesquisa {
 
     public static void pesquisaLargura(){
+        System.out.println("Entrou");
         boolean resolve = false;
 
         ArrayList<Node> no = new ArrayList<Node>();
