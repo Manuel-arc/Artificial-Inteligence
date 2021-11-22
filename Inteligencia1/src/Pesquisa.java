@@ -14,10 +14,10 @@ public class Pesquisa {
         Node goal = new Node();
 
         while(!resolve){
+            System.out.println(no.get(0).getEstado());
             if(no.get(0).getEstado().goal()){ 
                 resolve = true;
                 goal = no.get(0);
-                break;
             }
         }
 
