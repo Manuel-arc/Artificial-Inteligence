@@ -22,11 +22,12 @@ public class Pesquisa {
             }
 
             nosFronteira.addAll(nosFronteira.get(i).getNosSucessores());
-            System.out.println("Profundidade: " +nosFronteira.get(i).getProfundidade());
+            System.out.println("Profundidade: "+ nosFronteira.get(i).getProfundidade());
             i++;
         }
 
         System.out.println("\nNó final:\n"+ goal.getEstado());
+        System.out.println("Profundidade Final: "+ goal.getProfundidade());
     }
 
     public static void pesquisaProfundidade(){
