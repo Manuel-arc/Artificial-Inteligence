@@ -6,7 +6,7 @@ public class Pesquisa {
         boolean resolve = false;
 
         ArrayList<Node> nosFronteira = new ArrayList<Node>();
-        ArrayList<Node> estadoFechado = new ArrayList<Node>(); //Tirar comentario para usar estados fechados
+        ArrayList<Node> estadoFechado = new ArrayList<Node>(); 
 
         Node n = new Node(new PuzzleDeSeis(), null, null);
 
@@ -16,21 +16,32 @@ public class Pesquisa {
 
         while(!resolve){
             //Para usar estado fechados
-            for(Node q : estadoFechado){
+            /*for(Node q : estadoFechado){
                 if(q.getEstado().equals(nosFronteira.get(0).getEstado())){
                     continue;
                 }
-            }
+            }*/
 
             System.out.println(nosFronteira.get(0).getEstado());
             if(nosFronteira.get(0).getEstado().goal()){ 
                 resolve = true;
                 goal = nosFronteira.get(0);
-            } else{ // tirar comentario para usar estados fechados
+            } else{
                 estadoFechado.add(nosFronteira.get(0));
             }
 
-            nosFronteira.addAll(nosFronteira.get(0).getNosSucessores());
+            for(Node nfo : nosFronteira.get(0).getNosSucessores()){
+                boolean sim = False;
+                for(Node nfe : estadoFechado){
+                    if(nfo.getEstado().equals(nfe.getEstado())){
+                        sim = True;
+                    }
+                }
+                if(sim){
+                    nosFronteira.remove(nfo);
+                }
+            }
+
             System.out.println("Profundidade: "+ nosFronteira.get(0).getProfundidade());
             nosFronteira.remove(0);
         }
