@@ -4,8 +4,7 @@ public class PuzzleDeSeis implements IEstado{
 
 	//private int hash = Integer.MAX_VALUE;
 	private final int[][] goalMatriz = {{0,0,0,0,0,0},{1,2,3,4,5,6}};
-	
-	//private int[][] matriz = {{2,5,0,1,0,3},{6,0,0,0,0,4}};
+
 	private int[][] matriz = {{0,2,0,3,5,0}, {1,0,0,4,0,6}};
 
 	public PuzzleDeSeis(int[][] novo) {
