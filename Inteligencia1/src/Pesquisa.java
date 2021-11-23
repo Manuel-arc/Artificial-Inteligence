@@ -10,19 +10,14 @@ public class Pesquisa {
 
         Node n = new Node(new PuzzleDeSeis(), null, null);
 
-        nosFronteira.addAll(n.getNosSucessores());
+        nosFronteira.add(n);
+
 
         Node goal = new Node();
 
         while(!resolve){
-            //Para usar estado fechados
-            /*for(Node q : estadoFechado){
-                if(q.getEstado().equals(nosFronteira.get(0).getEstado())){
-                    continue;
-                }
-            }*/
-
             System.out.println(nosFronteira.get(0).getEstado());
+
             if(nosFronteira.get(0).getEstado().goal()){ 
                 resolve = true;
                 goal = nosFronteira.get(0);
@@ -30,17 +25,23 @@ public class Pesquisa {
                 estadoFechado.add(nosFronteira.get(0));
             }
 
-            for(Node nfo : nosFronteira.get(0).getNosSucessores()){
-                boolean sim = False;
+            ArrayList<Node> nfo = nosFronteira.get(0).getNosSucessores(); 
+            int i = 0;
+            while(i != nfo.size()){
+                boolean sim = false;
                 for(Node nfe : estadoFechado){
-                    if(nfo.getEstado().equals(nfe.getEstado())){
-                        sim = True;
+                    if(nfo.get(i).getEstado().equals(nfe.getEstado())){
+                        sim = true;
                     }
                 }
+                
                 if(sim){
-                    nosFronteira.remove(nfo);
+                    nfo.remove(i);
+                    i--;
                 }
+                i++;
             }
+            nosFronteira.addAll(nfo);
 
             System.out.println("Profundidade: "+ nosFronteira.get(0).getProfundidade());
             nosFronteira.remove(0);
