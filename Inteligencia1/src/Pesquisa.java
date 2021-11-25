@@ -105,8 +105,8 @@ public class Pesquisa {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        //pesquisaLargura();        
-        pesquisaProfundidade();
+        pesquisaLargura();        
+        //pesquisaProfundidade();
 
         long end = System.currentTimeMillis();
 
