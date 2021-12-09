@@ -5,7 +5,7 @@ public class PuzzleDeOito implements IEstado {
     // private int hash = Integer.MAX_VALUE;
     private final int[][] goalMatriz = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
-    private int[][] matriz = { { 3, 1, 0 }, { 4, 5, 6 }, { 7, 8, 2 } };
+    private int[][] matriz = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 0, 8 } };
 
     private String[] position = { "Positions:", "0,0", "0,1", "0,2", "1,0", "1,1", "1,2", "2,0", "2,1" };
 
@@ -64,7 +64,7 @@ public class PuzzleDeOito implements IEstado {
                 }
             }
         }
-        if (a == 12) {
+        if (a == 9) {
             return true;
         } else {
             return false;
@@ -126,7 +126,7 @@ public class PuzzleDeOito implements IEstado {
                     s.add(new Acao(novoEstado, 1, "direita"));
                 }
 
-                if (j < 5 && matriz[i][j] == 0 && matriz[i][j + 1] > 0) { // direita para a esquerda
+                if (j < 2 && matriz[i][j] == 0 && matriz[i][j + 1] > 0) { // direita para a esquerda
                     int[][] novo = new int[3][3];
                     for (int k = 0; k < 3; k++) {
                         for (int h = 0; h < 3; h++) {
@@ -191,11 +191,11 @@ public class PuzzleDeOito implements IEstado {
     }
 
     public String toString() {
-        return "'''''''''''\n" + matriz[0][0] + "|" + matriz[0][1] + "|" + matriz[0][2] + "|" + matriz[0][3] + "|"
-                + matriz[0][4] + "|" + matriz[0][5] + "\n" +
+        return "'''''''''''\n'''''''''''\n" + matriz[0][0] + "|" + matriz[0][1] + "|" + matriz[0][2] + "\n" +
                 "------------\n" +
-                matriz[1][0] + "|" + matriz[1][1] + "|" + matriz[1][2] + "|" + matriz[1][3] + "|" + matriz[1][4] + "|"
-                + matriz[1][5];
+                matriz[1][0] + "|" + matriz[1][1] + "|" + matriz[1][2] + "\n" +
+                "------------\n" +
+                matriz[2][0] + "|" + matriz[2][1] + "|" + matriz[2][2];
 
     }
 
@@ -203,6 +203,14 @@ public class PuzzleDeOito implements IEstado {
         PuzzleDeOito n = new PuzzleDeOito();
 
         System.out.println(n.h());
+
+        ArrayList<Acao> s = n.suc();
+
+        System.out.println(n);
+        for (Acao a : s) {
+            System.out.println(a.getEstado());
+            System.out.println(a.getEstado().goal());
+        }
         /*
          * PuzzleDeOito n2 = new PuzzleDeOito();
          * 
@@ -226,7 +234,8 @@ public class PuzzleDeOito implements IEstado {
          * System.out.println(n2);
          * System.out.println("\n" + n.hashCode());
          * System.out.println(n2.equals(n));
-         */// usar hashcode de PuzzelDeSeis
+         */
+        // usar hashcode de PuzzelDeSeis
 
     }
 
