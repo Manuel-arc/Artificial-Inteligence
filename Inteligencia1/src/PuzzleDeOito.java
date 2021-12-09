@@ -5,7 +5,9 @@ public class PuzzleDeOito implements IEstado {
     // private int hash = Integer.MAX_VALUE;
     private final int[][] goalMatriz = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
-    private int[][] matriz = { { 1, 0, 3 }, { 4, 5, 6 }, { 7, 8, 2 } };
+    private int[][] matriz = { { 3, 1, 0 }, { 4, 5, 6 }, { 7, 8, 2 } };
+
+    private String[] position = { "Positions:", "0,0", "0,1", "0,2", "1,0", "1,1", "1,2", "2,0", "2,1" };
 
     public PuzzleDeOito(int[][] novo) {
         matriz = new int[3][3];
@@ -26,7 +28,27 @@ public class PuzzleDeOito implements IEstado {
      */
     @Override
     public double h() {
-        return 0;
+        int first = 0;
+        int second = 0;
+        double soma = 0;
+
+        for (int k = 1; k < 9; k++) {
+            String[] s = position[k].split(",");
+
+            first = Integer.parseInt(s[0]);
+            second = Integer.parseInt(s[1]);
+
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (matriz[i][j] == k) {
+                        soma += Math.abs(i - first) + Math.abs(j - second);
+                        break;
+                    }
+                }
+            }
+        }
+
+        return soma;
     }
 
     /*
@@ -179,28 +201,32 @@ public class PuzzleDeOito implements IEstado {
 
     public static void main(String[] args) {
         PuzzleDeOito n = new PuzzleDeOito();
-        PuzzleDeOito n2 = new PuzzleDeOito();
 
-        System.out.println(n);
-        ArrayList<Acao> sim = n.suc();
-        ArrayList<Acao> ama = new ArrayList<>();
-        ArrayList<Acao> ama2 = new ArrayList<>();
-        for (Acao a : sim) {
-            ama.addAll(a.getEstado().suc());
-        }
-        for (Acao a : ama) {
-            ama2.addAll(a.getEstado().suc());
-        }
-
-        for (Acao a : ama2) {
-            if (a.getEstado().goal())
-                System.out.println(a.getEstado());
-        }
-
-        System.out.println(n);
-        System.out.println(n2);
-        System.out.println("\n" + n.hashCode());
-        System.out.println(n2.equals(n)); // usar hashcode de PuzzelDeSeis
+        System.out.println(n.h());
+        /*
+         * PuzzleDeOito n2 = new PuzzleDeOito();
+         * 
+         * System.out.println(n);
+         * ArrayList<Acao> sim = n.suc();
+         * ArrayList<Acao> ama = new ArrayList<>();
+         * ArrayList<Acao> ama2 = new ArrayList<>();
+         * for (Acao a : sim) {
+         * ama.addAll(a.getEstado().suc());
+         * }
+         * for (Acao a : ama) {
+         * ama2.addAll(a.getEstado().suc());
+         * }
+         * 
+         * for (Acao a : ama2) {
+         * if (a.getEstado().goal())
+         * System.out.println(a.getEstado());
+         * }
+         * 
+         * System.out.println(n);
+         * System.out.println(n2);
+         * System.out.println("\n" + n.hashCode());
+         * System.out.println(n2.equals(n));
+         */// usar hashcode de PuzzelDeSeis
 
     }
 
