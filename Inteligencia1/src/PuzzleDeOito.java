@@ -5,7 +5,7 @@ public class PuzzleDeOito implements IEstado {
     // private int hash = Integer.MAX_VALUE;
     private final int[][] goalMatriz = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
-    private int[][] matriz = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 0, 8 } };
+    private int[][] matriz = { { 1, 2, 3 }, { 5, 4, 7 }, { 6, 0, 8 } };
 
     private String[] position = { "Positions:", "0,0", "0,1", "0,2", "1,0", "1,1", "1,2", "2,0", "2,1" };
 
@@ -159,8 +159,8 @@ public class PuzzleDeOito implements IEstado {
 
         PuzzleDeOito np = (PuzzleDeOito) p;
         int a = 0;
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 6; j++) {
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
                 if (np.matriz[i][j] == this.matriz[i][j]) {
                     a++;
                 }
