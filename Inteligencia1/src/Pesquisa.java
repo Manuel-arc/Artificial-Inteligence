@@ -102,13 +102,13 @@ public class Pesquisa {
         System.out.println("Custo Final: " + goal.g());
     }
 
-    public void pesquisaAStar() {
+    public static void pesquisaAStar() {
         boolean resolve = false;
 
         ArrayList<Node> nosFronteira = new ArrayList<Node>();
         ArrayList<Node> estadoFechado = new ArrayList<Node>();
 
-        Node n = new Node(new PuzzleDeSeis(), null, null);
+        Node n = new Node(new PuzzleDeOito(), null, null);
 
         nosFronteira.add(n);
 
@@ -125,6 +125,12 @@ public class Pesquisa {
             }
 
             ArrayList<Node> nfo = nosFronteira.get(0).getNosSucessores();
+            System.out.println("Inicio Nos Fronteiras");
+            for (Node a : nfo) {
+                System.out.println(a.getEstado());
+            }
+            System.out.println("Fim Nos Fronteiras");
+
             int i = 0;
             while (i != nfo.size()) {
                 boolean sim = false;
@@ -141,13 +147,9 @@ public class Pesquisa {
             }
 
             Node elim = nosFronteira.get(0);
-            for (Node node : estadoFechado) {
-                for (Node node2 : nosFronteira) {
 
-                }
-            }
-
-            nosFronteira.addAll(0, nfo);
+            nosFronteira.addAll(nfo);
+            Collections.sort(nosFronteira, new ComparaCaminho());
 
             System.out.println("Profundidade: " + nosFronteira.get(0).getProfundidade());
             nosFronteira.remove(nosFronteira.indexOf(elim));
@@ -161,8 +163,9 @@ public class Pesquisa {
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
 
-        pesquisaLargura();
+        // pesquisaLargura();
         // pesquisaProfundidade();
+        pesquisaAStar();
 
         long end = System.currentTimeMillis();
 

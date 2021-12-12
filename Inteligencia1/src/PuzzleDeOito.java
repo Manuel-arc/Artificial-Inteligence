@@ -98,7 +98,8 @@ public class PuzzleDeOito implements IEstado {
                     s.add(new Acao(novoEstado, 1, "baixo"));
                 }
 
-                if (i == 1 && matriz[i][j] > 0 && matriz[i - 1][j] == 0) {
+                if (i == 1 && matriz[i][j] > 0) {
+                    String acao = "";
                     int[][] novo = new int[3][3];
                     for (int k = 0; k < 3; k++) {
                         for (int h = 0; h < 3; h++) {
@@ -106,10 +107,19 @@ public class PuzzleDeOito implements IEstado {
                         }
 
                     }
-                    novo[i - 1][j] = novo[i][j];
-                    novo[i][j] = 0;
+                    if (matriz[i - 1][j] == 0) {
+                        novo[i - 1][j] = novo[i][j];
+                        novo[i][j] = 0;
+                        acao = "cima";
+                    }
+                    if (matriz[i + 1][j] == 0) {
+                        novo[i + 1][j] = novo[i][j];
+                        novo[i][j] = 0;
+                        acao = "baixo";
+                    }
+
                     PuzzleDeOito novoEstado = new PuzzleDeOito(novo);
-                    s.add(new Acao(novoEstado, 1, "cima"));
+                    s.add(new Acao(novoEstado, 1, acao));
                 }
 
                 if (j > 0 && matriz[i][j - 1] > 0 && matriz[i][j] == 0) { // esquerda para a direita
@@ -166,7 +176,7 @@ public class PuzzleDeOito implements IEstado {
                 }
             }
         }
-        if (a == 12) {
+        if (a == 9) {
             return true;
         } else {
             return false;
