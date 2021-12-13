@@ -116,6 +116,7 @@ public class Pesquisa {
 
         while (!resolve) {
             System.out.println(nosFronteira.get(0).getEstado());
+            System.out.println("Caminho:"+nosFronteira.get(0).f());
 
             if (nosFronteira.get(0).getEstado().goal()) {
                 resolve = true;
@@ -125,11 +126,6 @@ public class Pesquisa {
             }
 
             ArrayList<Node> nfo = nosFronteira.get(0).getNosSucessores();
-            System.out.println("Inicio Nos Fronteiras");
-            for (Node a : nfo) {
-                System.out.println(a.getEstado());
-            }
-            System.out.println("Fim Nos Fronteiras");
 
             int i = 0;
             while (i != nfo.size()) {

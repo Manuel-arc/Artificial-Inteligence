@@ -5,7 +5,7 @@ public class PuzzleDeOito implements IEstado {
     // private int hash = Integer.MAX_VALUE;
     private final int[][] goalMatriz = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 0 } };
 
-    private int[][] matriz = { { 1, 2, 3 }, { 5, 4, 7 }, { 6, 0, 8 } };
+    private int[][] matriz = { { 2, 0, 1 }, { 3, 5, 4 }, { 6, 7, 8 } };
 
     private String[] position = { "Positions:", "0,0", "0,1", "0,2", "1,0", "1,1", "1,2", "2,0", "2,1" };
 
@@ -122,6 +122,22 @@ public class PuzzleDeOito implements IEstado {
                     s.add(new Acao(novoEstado, 1, acao));
                 }
 
+                if(i == 2 && matriz[i][j] > 0 && matriz[i-1][j] == 0){
+                    String acao = "";
+                    int[][] novo = new int[3][3];
+                    for (int k = 0; k < 3; k++) {
+                        for (int h = 0; h < 3; h++) {
+                            novo[k][h] = matriz[k][h];
+                        }
+                    } 
+
+                    novo[i - 1][j] = novo[i][j];
+                    novo[i][j] = 0;
+                    acao = "cima";
+                    PuzzleDeOito novoEstado = new PuzzleDeOito(novo);
+                    s.add(new Acao(novoEstado, 1, acao));
+                }    
+
                 if (j > 0 && matriz[i][j - 1] > 0 && matriz[i][j] == 0) { // esquerda para a direita
                     int[][] novo = new int[3][3];
                     for (int k = 0; k < 3; k++) {
@@ -220,6 +236,7 @@ public class PuzzleDeOito implements IEstado {
         for (Acao a : s) {
             System.out.println(a.getEstado());
             System.out.println(a.getEstado().goal());
+            System.out.println(a.getEstado().h());
         }
         /*
          * PuzzleDeOito n2 = new PuzzleDeOito();

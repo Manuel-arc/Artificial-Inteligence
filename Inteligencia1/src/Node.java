@@ -16,11 +16,11 @@ public class Node {
 
 		if (this.nodoPai == null) {
 			g = 0;
+            f = h();
 		} else {
 			g = nodoPai.g() + 1;
+            f = g() + h();
 		}
-
-		f = g() + h();
 
 		if (this.nodoPai == null) {
 			profundidade = 1;
