@@ -1,5 +1,6 @@
 {
     "java.project.sourcePaths": [
-        "Inteligencia1/src"
+        "Inteligencia1/src",
+        "Inteligencia1/alg_genetico"
     ]
 }
