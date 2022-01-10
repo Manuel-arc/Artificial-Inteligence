@@ -1,15 +1,15 @@
 public class Gene {
-    private byte gen;
+    private int gen;
 
-    public Gene(byte n){
+    public Gene(int n){
         this.gen = n;
     }
 
-    public byte getGen(){
+    public int getGen(){
         return gen;
     }
 
-    public void setGen(byte m){
+    public void setGen(int m){
         this.gen = m;
     }
 }

@@ -9,8 +9,4 @@ public class Individuo {
     public Gene[] getCromossoma(){
         return cromossoma;
     }
-
-    public void setGeneCromossoma(){
-        
-    }
 }
