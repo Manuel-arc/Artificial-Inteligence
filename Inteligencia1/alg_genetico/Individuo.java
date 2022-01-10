@@ -1,9 +1,16 @@
 public class Individuo {
 
+    private Gene[] cromossoma;
+
     public Individuo(){
-        
+        cromossoma = new Gene[64];
     }
-    public static void main(String[] args) {
-        System.out.println("Hello");
+
+    public Gene[] getCromossoma(){
+        return cromossoma;
+    }
+
+    public void setGeneCromossoma(){
+        
     }
 }
