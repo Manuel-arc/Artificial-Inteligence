@@ -3,8 +3,13 @@ import java.util.Random;
 
 public class Criacao {
 
-    private static Individuo[] grupo = new Individuo[16];
-    private static ArrayList<Individuo> grupoGrande = new ArrayList<>();
+    private static Individuo[] grupo;
+    private static ArrayList<Individuo> grupoGrande;
+
+    public Criacao(){
+        grupo = new Individuo[16];
+        grupoGrande = new ArrayList<>();
+    }
 
 
 
@@ -38,8 +43,14 @@ public class Criacao {
     }
 
     //juntar dois individuos
+    public static void juntaIndividuo(){
+
+    }
 
     //selecionar 16 individuos
+    public static void selectIndividuos(){
+        
+    }
 
     public static void printIndividuo(){
         for (Individuo a : grupo) {
