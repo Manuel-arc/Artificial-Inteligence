@@ -3,8 +3,8 @@ import java.util.Random;
 
 public class Criacao {
 
-    private static Individuo[] grupo;
-    private static ArrayList<Individuo> grupoGrande;
+    private static Individuo[] grupo = new Individuo[16];
+    private static ArrayList<Individuo> grupoGrande = new ArrayList<>();
 
     public Criacao(){
         grupo = new Individuo[16];
@@ -53,8 +53,12 @@ public class Criacao {
     }
 
     public static void printIndividuo(){
+        int i = 0;
         for (Individuo a : grupo) {
+            i += 1;
+            System.out.println(i +"º:");
             for(int j = 0; j < 64; j++){
+                
                 System.out.print(a.getCromossoma()[j].getGen()+" ");
             }
             System.out.println();
@@ -68,10 +72,9 @@ public class Criacao {
         //criarIndividuo();
 
         //printIndividuo();
-        
-        Random rand = new Random();
 
-        System.out.println(rand.nextInt(16));
+        
+        
     }
 
 }
