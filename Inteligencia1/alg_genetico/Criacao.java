@@ -3,49 +3,84 @@ import java.util.Random;
 
 public class Criacao {
 
-    private static Individuo[] grupo = new Individuo[16];
-    private static ArrayList<Individuo> grupoGrande = new ArrayList<>();
+    private static ArrayList<Individuo> grupo = new ArrayList<>();
 
     public Criacao(){
-        grupo = new Individuo[16];
-        grupoGrande = new ArrayList<>();
+        grupo = new ArrayList<>();
     }
 
 
-
-    //criar 16 individuos
     public static void criarIndividuo(){
         Individuo ind;
-        Random ran = new Random();
-        int n;
-        Gene g;
 
-        for(int i = 0; i < 16; i++){
-            ind = new Individuo();
-
-            for(int k = 0; k < 64; k++){
-                n = ran.nextInt(2);
-                g = new Gene(n);
-
-                ind.getCromossoma()[k] = g;
-            }
-            
-            grupo[i] = ind;
-
+        for(int i = 0; i < 2; i++){
+            ind = new Individuo();            
+            grupo.add(ind);
         }
 
-        
-    }
-
-    //Mutacao do gene aleatorio
-    public static void mutacaoGene(){
-        
     }
 
     //juntar dois individuos
     public static void juntaIndividuo(){
+        Individuo[] ind = new Individuo[2];
+        Random rand = new Random();
+
+        int n = grupo.size();
+
+        ind[0] = grupo.get(rand.nextInt(n));
+        ind[1] = grupo.get(rand.nextInt(n));
+
+        while(ind[0] == ind[1]){
+            ind[1] = grupo.get(rand.nextInt(n));
+        }
+
+        Individuo novo = new Individuo();
+        Gene[] arr = new Gene[64];
+
+        int num = rand.nextInt(2);
+
+        switch(num){
+            case 0:
+                for(int i = 0; i < 32; i++){
+                    arr[i] = ind[0].getCromossoma()[i];
+                }
+                for(int i = 32; i < 64; i++){
+                    arr[i] = ind[1].getCromossoma()[i];
+                }
+
+                novo.setCromossoma(arr);
+            break;
+
+            case 1:
+                for(int i = 0; i < 32; i++){
+                    arr[i] = ind[1].getCromossoma()[i];
+                }
+                for(int i = 32; i < 64; i++){
+                    arr[i] = ind[0].getCromossoma()[i];
+                }
+
+                novo.setCromossoma(arr);
+            break;
+            
+            default:{
+                System.out.println("ERRO!");
+            }
+        }
+
+        grupo.add(novo);
 
     }
+    
+
+    //Mutacao do gene aleatorio
+    public static void mutacaoGene(){
+        Random rand = new Random();
+
+        int n = grupo.size();
+
+        
+    }
+
 
     //selecionar 16 individuos
     public static void selectIndividuos(){
@@ -58,7 +93,6 @@ public class Criacao {
             i += 1;
             System.out.println(i +"º:");
             for(int j = 0; j < 64; j++){
-                
                 System.out.print(a.getCromossoma()[j].getGen()+" ");
             }
             System.out.println();
@@ -69,12 +103,13 @@ public class Criacao {
 
     
     public static void main(String[] args) {
-        //criarIndividuo();
+        criarIndividuo();
 
-        //printIndividuo();
+        for(int i = 0; i < 14; i++){
+            juntaIndividuo();
+        }
 
-
-        
+        printIndividuo();
     }
 
 }
