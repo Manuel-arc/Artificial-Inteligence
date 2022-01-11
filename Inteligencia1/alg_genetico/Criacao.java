@@ -34,41 +34,33 @@ public class Criacao {
             ind[1] = grupo.get(rand.nextInt(n));
         }
 
-        Individuo novo = new Individuo();
-        Gene[] arr = new Gene[64];
 
-        int num = rand.nextInt(2);
+        int num = rand.nextInt(64);
+        Individuo novo;
+        Gene[] arr;
 
-        switch(num){
-            case 0:
-                for(int i = 0; i < 32; i++){
-                    arr[i] = ind[0].getCromossoma()[i];
+        for(int i = 0; i < 2; i++){
+            novo = new Individuo();
+            arr = new Gene[64];
+            if(i == 0){
+                for(int j = 0; j < num; j++){
+                    arr[j] = ind[0].getCromossoma()[j];
                 }
-                for(int i = 32; i < 64; i++){
-                    arr[i] = ind[1].getCromossoma()[i];
+                for(int k = num; k < 64; k++){
+                    arr[k] = ind[1].getCromossoma()[k];
                 }
-
-                novo.setCromossoma(arr);
-            break;
-
-            case 1:
-                for(int i = 0; i < 32; i++){
-                    arr[i] = ind[1].getCromossoma()[i];
-                }
-                for(int i = 32; i < 64; i++){
-                    arr[i] = ind[0].getCromossoma()[i];
-                }
-
-                novo.setCromossoma(arr);
-            break;
-            
-            default:{
-                System.out.println("ERRO!");
             }
+            if(i == 1){
+                for(int j = 0; j < num; j++){
+                    arr[j] = ind[1].getCromossoma()[j];
+                }
+                for(int k = num; k < 64; k++){
+                    arr[k] = ind[0].getCromossoma()[k];
+                }
+            }
+            novo.setCromossoma(arr);
+            grupo.add(novo);
         }
-
-        grupo.add(novo);
-
     }
     
 
@@ -78,7 +70,7 @@ public class Criacao {
 
         int n = grupo.size();
 
-        
+
     }
 
 
@@ -105,7 +97,7 @@ public class Criacao {
     public static void main(String[] args) {
         criarIndividuo();
 
-        for(int i = 0; i < 14; i++){
+        for(int i = 0; i < 1000; i++){
             juntaIndividuo();
         }
 
