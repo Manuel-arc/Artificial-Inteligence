@@ -39,7 +39,7 @@ public class Criacao {
 
     //Mutacao do gene aleatorio
     public static void mutacaoGene(){
-
+        
     }
 
     //juntar dois individuos
@@ -73,7 +73,7 @@ public class Criacao {
 
         //printIndividuo();
 
-        
+
         
     }
 
