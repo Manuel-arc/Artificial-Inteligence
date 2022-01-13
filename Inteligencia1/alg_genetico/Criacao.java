@@ -83,7 +83,7 @@ public class Criacao {
     //selecionar 16 individuos
     public static void selectIndividuos(){
         Collections.sort(grupo, new ComparaAptidao());
-
+        
         grupo.remove(16);
         grupo.remove(17);
     }
