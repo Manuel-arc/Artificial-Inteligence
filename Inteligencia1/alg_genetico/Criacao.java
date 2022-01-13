@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Collections;
 
 public class Criacao {
 
@@ -14,7 +15,9 @@ public class Criacao {
         Individuo ind;
 
         for(int i = 0; i < 2; i++){
-            ind = new Individuo();            
+            ind = new Individuo(); 
+            ind.criarCromossoma();
+            ind.individuoAptidao();           
             grupo.add(ind);
         }
 
@@ -35,7 +38,7 @@ public class Criacao {
         }
 
 
-        int num = rand.nextInt(64);
+        int num = rand.nextInt(63);
         Individuo novo;
         Gene[] arr;
 
@@ -59,6 +62,7 @@ public class Criacao {
                 }
             }
             novo.setCromossoma(arr);
+            novo.individuoAptidao();
             grupo.add(novo);
         }
     }
@@ -71,12 +75,17 @@ public class Criacao {
         int n = grupo.size();
 
 
+
+
     }
 
 
     //selecionar 16 individuos
     public static void selectIndividuos(){
-        
+        Collections.sort(grupo, new ComparaAptidao());
+
+        grupo.remove(16);
+        grupo.remove(17);
     }
 
     public static void printIndividuo(){
@@ -97,9 +106,12 @@ public class Criacao {
     public static void main(String[] args) {
         criarIndividuo();
 
-        for(int i = 0; i < 1000; i++){
-            juntaIndividuo();
-        }
+        printIndividuo();
+
+        System.out.println(grupo.get(0).getAptidao());
+        System.out.println(grupo.get(1).getAptidao());
+
+        Collections.sort(grupo, new ComparaAptidao());
 
         printIndividuo();
     }
