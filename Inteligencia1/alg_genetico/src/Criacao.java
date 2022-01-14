@@ -100,7 +100,7 @@ public class Criacao {
         int i = 0;
         for (Individuo a : grupo) {
             i += 1;
-            System.out.println(i + "º: " + a + "  " + a.getAptidao());
+            System.out.println(i + "º: (" + a + ")  Aptidão: " + a.getAptidao());
             System.out.println();
         }
     }

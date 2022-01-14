@@ -18,7 +18,7 @@ public class Teste {
              */
             p.juntaIndividuo();
 
-            choice = rand.nextInt(100);
+            choice = rand.nextInt(1000);
 
             if (choice == 5) {
                 num_mutacoes++;
